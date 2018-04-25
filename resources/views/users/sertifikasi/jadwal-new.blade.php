@@ -2,7 +2,7 @@
 @section('pageTitle', 'Sertifikasi')
 @section('description', 'Share text and photos with your friends and have fun')
 @section('content')
-<h1 class="mt-4 mb-3">Jadwal</h1>
+<h4 class="mt-4 mb-3">Jadwal</h4>
 
 <ol class="breadcrumb">
   <li class="breadcrumb-item">

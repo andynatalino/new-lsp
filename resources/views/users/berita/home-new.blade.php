@@ -2,9 +2,16 @@
 @section('pageTitle', 'Sertifikasi')
 @section('description', 'Share text and photos with your friends and have fun')
 @section('content')
+  <style type="text/css">
+   
+      img {max-width:500px;
+        max-height: 500px;
+      }
+   
+  </style>
 
 <!-- Page Heading/Breadcrumbs -->
-<h1 class="mt-4 mb-3">Berita</h1>
+<h4 class="mt-4 mb-3">Berita</h4>
 
 <ol class="breadcrumb">
 	<li class="breadcrumb-item">
@@ -19,7 +26,7 @@
 	<div class="col-md-8">
 		@foreach($berita as $key)
 		<div class="card mb-4">
-			<img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+			<!-- <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap"> -->
 			<div class="card-body">
 				<h2 class="card-title">{{ $key->judul }}</h2>
 				<p class="card-text">{!! \Illuminate\Support\Str::words($key->isi, 100,'....') !!}</p>

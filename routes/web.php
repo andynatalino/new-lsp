@@ -39,7 +39,11 @@ Route::group(['prefix' => 'pembayaran'], function(){
   Route::delete('/{id}', 'SertifikasiController@pembayaran_delete');
   Route::post('/daftar', 'SertifikasiController@daftar');
 });
-Route::get('/galeri', 'IndexController@galeri');
+// Route::get('/galeri', 'IndexController@galeri');
+Route::get('galeri',function ()
+  {
+    return view('errors.coming-soon');
+ });
 Route::get('/kontak', 'IndexController@kontak');  
 Route::post('/kontak', 'IndexController@kontak_save');  
 
@@ -52,7 +56,11 @@ Route::group(['prefix' => 'tentang'], function(){
 });
 
 Route::group(['prefix' => 'profil'], function(){
-  Route::get('/', 'ProfileController@index');
+  // Route::get('/', 'ProfileController@index');
+  Route::get('/',function ()
+  {
+    return view('errors.coming-soon');
+  });
   Route::get('/konfirmasi', 'ProfileController@konfirmasi');
   Route::post('/konfirmasi', 'ProfileController@konfirmasiSave');
   Route::get('/order', 'ProfileController@order');
@@ -65,7 +73,15 @@ Route::group(['prefix' => 'profil'], function(){
   Route::get('/{slug}/change-data', 'ProfileController@change_data');
   Route::post('/{slug}/change-data', 'ProfileController@change_data_save');
   Route::get('{id}/pdf', 'ProfileController@pdf');
-  Route::get('sertifikat', 'ProfileController@sertifikat');
+  // Route::get('sertifikat', 'ProfileController@sertifikat');
+  Route::get('sertifikat',function ()
+  {
+    return view('errors.coming-soon');
+  });
+  Route::get('transaksi',function ()
+  {
+    return view('errors.coming-soon');
+  });
 });
 Route::get('checkout', 'SertifikasiController@cek');
 Route::delete('checkout/delete/{id}', 'SertifikasiController@checkout_delete');

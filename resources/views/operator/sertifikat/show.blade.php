@@ -39,8 +39,8 @@
 						: {{ $trans->tanggal_konfirmasi }}
 					</div>
 					<input type="hidden" name="id" value="{{ $trans->id }}">
-					<button name="status" value="kompeten" class="btn btn-primary">KOMPETEN</button>
-					<button name="status" value="tidakkompeten" class="btn btn-danger">TIDAK KOMPETEN</button>
+					<button name="status" value="1" class="btn btn-primary">KOMPETEN</button>
+					<button name="status" value="2" class="btn btn-danger">TIDAK KOMPETEN</button>
 				</form>
 			</div>
 

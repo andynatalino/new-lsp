@@ -268,7 +268,7 @@ public function jadwal_save(Request $request){
   $jadwal->biaya = $request->biaya;
   $jadwal->isi = $request->isi;
   $jadwal->status = $request->status;
-  $jadwal->slug = str_slug($request->nama_lsp);
+  $jadwal->slug = str_slug($request->nama);
   $jadwal->info = $request->info;
   $jadwal->skema = $request->skema;
   // $jadwal->image = '';
@@ -290,7 +290,7 @@ public function jadwal_edit($id){
 public function jadwal_update(Request $request, $id){
   $jadwal = Jadwal::find($id);
   $jadwal->id_kategori = $request->id_kategori;
-  $jadwal->nama_lsp = $request->nama_lsp;
+  $jadwal->nama = $request->nama;
   $jadwal->tanggal_mulai = $request->tanggal_mulai;
   $jadwal->tanggal_selesai = $request->tanggal_selesai;
   $jadwal->waktu = $request->waktu;
@@ -299,7 +299,7 @@ public function jadwal_update(Request $request, $id){
   $jadwal->biaya = $request->biaya;
   $jadwal->isi = $request->isi;
   $jadwal->status = $request->status;
-  $jadwal->slug = str_slug($request->nama_lsp);
+  $jadwal->slug = str_slug($request->nama);
   $jadwal->save();
 
   return redirect(url('operator/jadwal'));

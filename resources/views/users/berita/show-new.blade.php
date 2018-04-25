@@ -4,7 +4,7 @@
 @section('content')
 
 <!-- Page Heading/Breadcrumbs -->
-<h1 class="mt-4 mb-3">{{ $berita->judul }}</h1>
+<h4 class="mt-4 mb-3">{{ $berita->judul }}</h4>
 
 <ol class="breadcrumb">
 	<li class="breadcrumb-item">
@@ -58,20 +58,6 @@ this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your pag
 
 <!-- Sidebar Widgets Column -->
 <div class="col-md-4">
-
-	<!-- Search Widget -->
-	<div class="card mb-4">
-		<h5 class="card-header">Search</h5>
-		<div class="card-body">
-			<div class="input-group">
-				<input type="text" class="form-control" placeholder="Search for...">
-				<span class="input-group-btn">
-					<button class="btn btn-secondary" type="button">Go!</button>
-				</span>
-			</div>
-		</div>
-	</div>
-
 	<!-- Categories Widget -->
 	<div class="card my-4">
 		<h5 class="card-header">Categories</h5>

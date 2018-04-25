@@ -9,7 +9,7 @@
       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner" role="listbox">
-      
+
 
       @foreach($slider as $key)
       <div class="carousel-item @if ($slider->first() == $key) active @endif" style="background-image: url('{{ url('assets/slider/'.$key->gambar) }}')" alt="{{ $key->nama_slider }}">
@@ -20,7 +20,7 @@
       </div>
       @endforeach
 
-     
+
 <!--       <div class="carousel-item" style="background-image: url('https://images7.alphacoders.com/331/thumb-1920-331785.jpg')">
         <div class="carousel-caption d-none d-md-block">
           <h3>Third Slide</h3>
@@ -44,21 +44,54 @@
 @section('content')
 <br>
 <hr>
+<!-- Three columns of text below the carousel -->
 <div class="row">
-    @foreach($berita as $key)
-  <div class="col-lg-4 col-sm-6 portfolio-item">
-    <div class="card h-100">
-      <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-      <div class="card-body">
-        <h4 class="card-title">
-          <a href="#">{{ $key->judul }}</a>
-        </h4>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
-      </div>
+  <div class="col-lg-4">
+
+    <h2>Teknologi Informasi</h2>
+    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+
+  </div><!-- /.col-lg-4 -->
+  <div class="col-lg-4">
+
+    <h2>Akuntansi</h2>
+    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+
+  </div><!-- /.col-lg-4 -->
+  <div class="col-lg-4">
+
+    <h2>Pemasaran</h2>
+    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+
+  </div><!-- /.col-lg-4 -->
+</div><!-- /.row -->
+<hr>
+<!-- berita -->
+<div class="row">
+  @foreach($berita as $key)
+  <style type="text/css">
+
+  img {max-width:300px;
+    max-height: 300px;
+  }
+
+</style>
+<div class="col-lg-4 col-sm-6 portfolio-item">
+  <div class="card h-100">
+    <!--   <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a> -->
+    <div class="card-body">
+      <h4 class="card-title">
+        <a href="{{ url('berita/'.$key->slug) }}">{{ $key->judul }}</a>
+      </h4>
+      <p class="card-text">{!! \Illuminate\Support\Str::words($key->isi, 50,'....')  !!}</p>
     </div>
   </div>
-  @endforeach
- 
 </div>
+<br>
+{{ $berita->links() }}
+@endforeach
+
+</div>
+<!-- end berita -->
 <hr>
 @endsection

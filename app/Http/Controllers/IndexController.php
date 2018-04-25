@@ -17,7 +17,7 @@ class IndexController extends Controller
 
     $aa = Setting::get();
     $slider = Slider::all();
-    $berita = Berita::orderBy('id', 'desc')->paginate(5);
+    $berita = Berita::orderBy('id', 'desc')->paginate(6);
     return view('users.index', ['berita' => $berita,'slider' => $slider, 'aa' => $aa]);
   }
 

@@ -3,7 +3,7 @@
 @section('description', 'Share text and photos with your friends and have fun')
 @section('content')
 <?php $ss = App\setting::first(); ?>
-<h1 class="mt-4 mb-3">Kontak</h1>
+<h4 class="mt-4 mb-3">Kontak</h4>
 
 <ol class="breadcrumb">
 	<li class="breadcrumb-item">

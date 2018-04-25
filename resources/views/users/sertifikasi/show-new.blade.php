@@ -7,7 +7,7 @@ $transaksi = App\Transaksi::where(['id_jadwal' => $jadwal->id])->first();
 $con = App\Transaksi::where(['id_jadwal' => $jadwal->id, 'status' => 2])->get()->count();  
 $kuota = $jadwal->kuota;
 ?>
-<h1 class="mt-4 mb-3">{{ $jadwal->nama }}</h1>
+<h4 class="mt-4 mb-3">{{ $jadwal->nama }}</h4>
 
 <ol class="breadcrumb">
 	<li class="breadcrumb-item">

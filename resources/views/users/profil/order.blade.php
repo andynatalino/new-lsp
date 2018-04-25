@@ -3,8 +3,8 @@
 
 @section('content')
 
-<h1 class="mt-4 mb-3">Order
-  <small>Transaksi Pending</small></h1>
+<h4 class="mt-4 mb-3">Order
+  <small>Transaksi Pending</small></h4>
   @if(session('sukses'))
   <div class="alert alert-success" role="alert">
     <strong>Notifikasi!</strong> {{ session('sukses')}} 

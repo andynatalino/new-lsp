@@ -11,7 +11,7 @@
           <a class="nav-link text-white" href="{{ url('sertifikasi')}}">Sertifikasi</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="{{ url('berita')}}">Berita</a>
+          <a class="nav-link text-white" href="{{ url('berita')}}">Klien Kami</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white" href="{{ url('kontak')}}">Kontak</a>
@@ -35,14 +35,17 @@
     @guest
     <ul class="navbar-nav mr-sm-2">
       <li class="nav-item">
-        <a class="nav-link text-white" href="{{ url('login')}}">Login</a>
+        <a class="nav-link text-white" href="{{ url('login')}}">Masuk</a>        
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="{{ url('register')}}">Daftar</a>
       </li>
     </ul>
     @else
     <ul class="navbar-nav mr-sm-2">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Andy Natalino
+          {{ Auth::user()->name }}
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
           <a class="dropdown-item" href="{{ url('profil')}}">Profil</a>

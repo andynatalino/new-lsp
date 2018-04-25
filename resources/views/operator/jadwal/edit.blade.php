@@ -26,7 +26,7 @@ $(function () {
           </div>
           <div class="form-group">
             <label>Nama LSP</label>
-            <input type="text" required class="form-control" value="{{ $jadwal->nama_lsp }}" name="nama_lsp" placeholder="Nama LSP">
+            <input type="text" required class="form-control" value="{{ $jadwal->nama_lsp }}" name="nama" placeholder="Nama">
           </div>
           <div class="form-group">
             <label>Tanggal Mulai</label>

@@ -8,7 +8,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>404 Not Found - Sakasakti</title>
+	<title>Coming Soon - Sakasakti</title>
 
 	<link href="{{ url('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 	<link href="{{ url('vendor/modern-business.min.css')}}" rel="stylesheet">
@@ -19,9 +19,9 @@
 	<meta name="robots" content="noindex,nofollow">
 
 	<div class="text-center">
-		<img style="width: 30%" src="https://s3-ap-southeast-1.amazonaws.com/assets-production.feastbump.com/static/images/Error/404/404-1250px.gif" alt="">
-		<h1 class="display-1">404</h1>
-		<p>Halaman yang Anda cari tidak dapat ditemukan</p>
+		<img style="width: 30%" src="http://www.thejourneywith.us/hp_wordpress/wp-content/uploads/2017/12/coming-soon.png" alt="">
+		<h1 class="display-1">Coming Soon</h1>
+		<p>Halaman sedang dalam proses pengerjaan ...</p>
 		<a href="{{ url('/')}}" class="btn btn-primary">Back to Home</a>
 	</div>
 
