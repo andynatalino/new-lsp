@@ -1,7 +1,7 @@
 <?php $tentang = App\tentang::all(); ?>
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-danger fixed-top">
   <div class="container">     
-    <a href="{{ url('/')}}"><img src="http://localhost:8000/assets/logo/201802211206105a8cfe42d8658.png" style="height: 39px; display: inline-block; margin-right: 10px; margin-bottom: 1px"></a>          
+    <a href="{{ url('/')}}"><img src="{{ url('assets/logo/201804131339095ad0508d7c67f.png')}}" style="height: 39px; display: inline-block; margin-right: 10px; margin-bottom: 1px"></a>          
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

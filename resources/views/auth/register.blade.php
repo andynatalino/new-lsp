@@ -4,7 +4,7 @@
 
 @section('content')
 <br>
-<center>
-<img style="max-height: 200px;" src="https://i.imgur.com/BOOq7hk.gif">
-</center>
+<p class="text-center">
+  <img style="max-height: 200px;" src="https://i.imgur.com/BOOq7hk.gif">
+</p>
 @endsection
