@@ -237,7 +237,7 @@ $pembayaran = App\Pembayaran::get();
       <div class="d-block my-3">
         @foreach($pembayaran as $key)
         <div class="custom-control custom-radio">
-          <input id="pembayaran{{$key->id}}" name="bank" type="radio" value="{{ $key->id }}" class="custom-control-input">
+          <input id="pembayaran{{$key->id}}" name="pembayaran" type="radio" value="{{ $key->id }}" class="custom-control-input">
           <label class="custom-control-label" for="pembayaran{{$key->id}}"></label>
           <img width="100" src="{{ url('assets/logo/'.$key->logo)}}">
         </div>
@@ -245,7 +245,7 @@ $pembayaran = App\Pembayaran::get();
         @endforeach 
 
         <div class="custom-control custom-radio">
-          <input id="tunai" name="tunai" type="radio" value="1" class="custom-control-input">
+          <input id="tunai" name="pembayaran" type="radio" value="tunai" class="custom-control-input">
           <label class="custom-control-label" for="tunai"><b>TUNAI</b></label>
         </div>
       </div>

@@ -41,7 +41,7 @@
       <td>{{ $key->waktu }}</td>
       <td>{{ str_limit($key->lokasi, 20) }}</td>
       <td>{{ App\Transaksi::where(['id_jadwal' => $key->id, 'status' => 2])->get()->count() }} / {{ $key->kuota }} Orang</td>
-      <td>Rp. {{ $key->biaya }},-</td>
+      <td>Rp{{ number_format($key->biaya) }}</td>
       <td><a href="{{ url('sertifikasi/'.$kategori->slug.'/'.$key->slug) }}"><button type="button" class="btn btn-primary">Lihat</button></a></td>
     </tr>   
     @endforeach

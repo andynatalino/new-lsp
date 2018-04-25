@@ -135,8 +135,7 @@ public function checkoutSave(Request $request){
    'namaperusahaan'=>'required',
    'alamatperusahaan'=>'required',
    'emailperusahaan'=>'required',
-   'bank' => 'required_without_all:tunai',
-   'tunai' => 'required_without_all:bank',
+   'pembayaran' => 'required',
  ]);
 
  $ud = new Userdata;  
@@ -163,16 +162,21 @@ public function checkoutSave(Request $request){
  $transaksi = new Transaksi;
  $transaksi->id_user = Auth::user()->id;
  $transaksi->id_jadwal = $request->id_jadwal;
- $transaksi->id_pembayaran = $request->bank;
  $transaksi->id_userdata = $ud->id;
  $transaksi->kode_transfer = $jadwal->biaya + rand(100, 999);
- $transaksi->tunai = $request->tunai;
- if ($request->tunai == '1') {
+
+ if ($request->tunai == 'tunai') {
   $transaksi->status = 2;
+  $transaksi->tunai = 1;
+  $transaksi->id_pembayaran = null ;
 }else{
+  $transaksi->tunai = null;
   $transaksi->status = 1;  
+  $transaksi->id_pembayaran = $request->pembayaran;
 }
+
 $transaksi->save();
+dd($transaksi);
 
 return redirect(url('checkout'));
 }
