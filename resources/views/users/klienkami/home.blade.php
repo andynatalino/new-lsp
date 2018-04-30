@@ -1,6 +1,6 @@
 @extends('layouts.users.app-new')
-@section('pageTitle', 'Berita')
-@section('description', 'Berita atau Blog seputar dunia sertifikasi')
+@section('pageTitle', 'Sertifikasi')
+@section('description', 'Klien Kami Sakasakti Sertifikasi')
 @section('content')
 <br>
 <p class="text-center">

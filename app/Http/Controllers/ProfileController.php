@@ -9,7 +9,8 @@ use App\User;
 use App\Setting;
 use App\Kategori;
 use App\Transaksi;
-use App\Trans;
+use App\Jadwal;
+use App\trans;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
@@ -40,8 +41,8 @@ class ProfileController extends Controller
     	if (!$transaksi){ 
         return view('users.profil.nothing-konfirmasi');
 
-       }
-    	return view('users.profil.konfirmasi', ['transaksi' => $transaksi]);
+      }
+      return view('users.profil.konfirmasi', ['transaksi' => $transaksi]);
     }
     public function konfirmasiSave(Request $request){
 
@@ -53,90 +54,99 @@ class ProfileController extends Controller
         'photo_bukti' => 'required|image|mimes:jpeg,png,jpg|max:2048',
       ]);
 
+      $jadwal = jadwal::find($request->id_jadwal);
       $id = $request->id;
       $now = new DateTime();
       $transaksi = Transaksi::find($id);
       $transaksi->tanggal = $now;
       $transaksi->nama_pengirim = $request->nama_pengirim;
       $transaksi->asal_bank = $request->asal_bank;
-      $transaksi->kode_transfer = $request->jumlah_transfer;
-      $transaksi->status = 2;
-      $transaksi->photo_bukti = '';
-      if($request->hasFile('photo_bukti')){
-        $image = date('YmdHis').uniqid().".". $request->photo_bukti->getClientOriginalExtension();
-        $request->photo_bukti->move(public_path()."/assets/bukti",$image);
-        $transaksi->photo_bukti = $image;
-      }
-      $transaksi->save();
 
-      return redirect(url('profil/order'))->with('sukses', 'Anda telah mengupload bukti transaksi! 1x24 jam Operator akan memverifikasi bukti Anda');
+      if ($request->jumlah_transfer < $jadwal->biaya) {
+          return back()->with('notifikasi', 'Jumlah Transfer Kurang!');
+      }else{
+        dd('pas coy');
+       $transaksi->kode_transfer = $request->jumlah_transfer;
+     }
+
+     die();
+     $transaksi->status = 2;
+     $transaksi->photo_bukti = '';
+     if($request->hasFile('photo_bukti')){
+      $image = date('YmdHis').uniqid().".". $request->photo_bukti->getClientOriginalExtension();
+      $request->photo_bukti->move(public_path()."/assets/bukti",$image);
+      $transaksi->photo_bukti = $image;
     }
-    public function change_photo($slug){
+    $transaksi->save();
 
-     $aa = Setting::get();
-     $id = Auth::user()->id;
-     $user = User::find($id);
-     return view('users.profil.change.photo', ['user' => $user, 'aa' => $aa]);
-   }
-
-   public function change_photo_save(Request $request){
-     $this->validate($request, [
-      'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-    ]);
-     $id = Auth::user()->id;
-     $user = User::find($id);
-     $user->photo = '';		
-     if($request->hasFile('photo')){
-      $image = date('YmdHis').uniqid().".". 
-      $request->photo->getClientOriginalExtension();
-      $request->photo->move(public_path()."/assets/photo",$image);
-      $user->photo = $image;
-    }
-    $user->save();
-    return back()->with('sukses', 'Anda berhasil mengubah foto!');
+    return redirect(url('profil/order'))->with('sukses', 'Anda telah mengupload bukti transaksi! 1x24 jam Operator akan memverifikasi bukti Anda');
   }
-
-  public function change_email($slug){
+  public function change_photo($slug){
 
    $aa = Setting::get();
    $id = Auth::user()->id;
    $user = User::find($id);
-   return view('users.profil.change.email', ['user' => $user, 'aa' => $aa]);
+   return view('users.profil.change.photo', ['user' => $user, 'aa' => $aa]);
  }
 
- public function change_email_save(Request $request){	
-   $id = Auth::user()->id;
+ public function change_photo_save(Request $request){
    $this->validate($request, [
-    'email' => 'unique:users,email,'.$id,
+    'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
   ]);
-
-   $user = User::find($id);
-   $user->email = $request->email;
-   $user->save();		
-
-   return back()->with('sukses', 'Anda berhasil mengubah email!');
- }
-
- public function change_password($slug){
-
-   $aa = Setting::get();
    $id = Auth::user()->id;
    $user = User::find($id);
-   return view('users.profil.change.password', ['user' => $user, 'aa' => $aa]);
- }
-
- public function change_password_save(Request $request){
-   $a = User::find(Auth::User()->id);
-   if (Hash::check($request->oldpw, $a['password']) && $request->newpw == $request->confnewpw) {
-    $this->validate($request, [
-     'password' => 'required|string|min:6',
-   ]);
-    $a->password = bcrypt($request->newpw);
-    $a->save();
-    return back()->with('sukses', 'Anda berhasil mengubah password!');
-  }else {
-    return back()->with('gagal', 'Password yang anda masukan tidak sesuai!');
+   $user->photo = '';		
+   if($request->hasFile('photo')){
+    $image = date('YmdHis').uniqid().".". 
+    $request->photo->getClientOriginalExtension();
+    $request->photo->move(public_path()."/assets/photo",$image);
+    $user->photo = $image;
   }
+  $user->save();
+  return back()->with('sukses', 'Anda berhasil mengubah foto!');
+}
+
+public function change_email($slug){
+
+ $aa = Setting::get();
+ $id = Auth::user()->id;
+ $user = User::find($id);
+ return view('users.profil.change.email', ['user' => $user, 'aa' => $aa]);
+}
+
+public function change_email_save(Request $request){	
+ $id = Auth::user()->id;
+ $this->validate($request, [
+  'email' => 'unique:users,email,'.$id,
+]);
+
+ $user = User::find($id);
+ $user->email = $request->email;
+ $user->save();		
+
+ return back()->with('sukses', 'Anda berhasil mengubah email!');
+}
+
+public function change_password($slug){
+
+ $aa = Setting::get();
+ $id = Auth::user()->id;
+ $user = User::find($id);
+ return view('users.profil.change.password', ['user' => $user, 'aa' => $aa]);
+}
+
+public function change_password_save(Request $request){
+ $a = User::find(Auth::User()->id);
+ if (Hash::check($request->oldpw, $a['password']) && $request->newpw == $request->confnewpw) {
+  $this->validate($request, [
+   'password' => 'required|string|min:6',
+ ]);
+  $a->password = bcrypt($request->newpw);
+  $a->save();
+  return back()->with('sukses', 'Anda berhasil mengubah password!');
+}else {
+  return back()->with('gagal', 'Password yang anda masukan tidak sesuai!');
+}
 }
 
 public function change_data($slug){
@@ -169,7 +179,7 @@ public function change_data_save(Request $request){
 
 public function order(){
  $transaksi = Transaksi::where(['id_user' => Auth::user()->id])->orderBy('id','desc')->paginate(10); 
- $trans = Trans::where(['user' => Auth::user()->id])->orderBy('id','desc')->paginate(10);      
+ $trans = trans::where(['user' => Auth::user()->id])->orderBy('id','desc')->paginate(10);      
  return view('users.profil.order', ['transaksi' => $transaksi, 'trans' => $trans]);	
 }
 

@@ -14,6 +14,8 @@ use App\Kategori;
 use App\Transaksi;
 use App\Pembayaran;
 use App\trans;
+use App\kolum;
+use DB;
 use Illuminate\Http\Request;
 
 class opController extends Controller
@@ -439,18 +441,40 @@ public function sertifikat()
 public function sertifikat_show($id)
 {
   $trans = trans::find($id);
-   if (!$trans){ abort(404); }
+  if (!$trans){ abort(404); }
   return view('operator.sertifikat.show', ['trans' => $trans]); 
 }
-  
-  public function sertifikat_save(Request $request)
-  {
-   $trans = trans::find($request->id);
-   $trans->status = $request->status;
-   $trans->notifikasi = 1;
-   $trans->save();
-  return redirect('operator/sertifikat');
-  }
+
+public function sertifikat_save(Request $request)
+{
+ $trans = trans::find($request->id);
+ $trans->status = $request->status;
+ $trans->notifikasi = 1;
+ $trans->save();
+ return redirect('operator/sertifikat');
+}
+
+public function halaman()
+{
+  $kolum = kolum::all();     
+  return view('operator.halaman.all', ['kolum' => $kolum]); 
+}
+
+public function halaman_show($id)
+{
+ $kolum = kolum::find($id);
+ if (!$kolum){ abort(404); }
+ return view('operator.halaman.show', ['kolum' => $kolum]); 
+}
+
+public function halaman_save(Request $request)
+{
+ $kolum = kolum::find($request->id);
+ $kolum->judul = $request->judul;
+ $kolum->isi =  $request->isi;
+ $kolum->save();
+ return redirect('operator/halaman');
+}
 
 }
 

@@ -176,7 +176,7 @@ public function checkoutSave(Request $request){
 }
 
 $transaksi->save();
-dd($transaksi);
+  
 
 return redirect(url('checkout'));
 }

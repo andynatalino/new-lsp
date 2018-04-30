@@ -9,16 +9,18 @@ use App\Slider;
 use App\tentang;
 use App\Setting;
 use App\trans;
+use App\kolum;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
   public function index(){
 
+    $kolum = kolum::all();
     $aa = Setting::get();
     $slider = Slider::all();
     $berita = Berita::orderBy('id', 'desc')->paginate(6);
-    return view('users.index', ['berita' => $berita,'slider' => $slider, 'aa' => $aa]);
+    return view('users.index', ['berita' => $berita,'slider' => $slider, 'aa' => $aa,'kolum' => $kolum]);
   }
 
   public function berita_all(){

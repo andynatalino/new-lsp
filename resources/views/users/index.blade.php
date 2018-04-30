@@ -46,24 +46,13 @@
 <hr>
 <!-- Three columns of text below the carousel -->
 <div class="row">
+  @foreach($kolum as $key)
   <div class="col-lg-4">
-
-    <h2>Teknologi Informasi</h2>
-    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+    <h2>{{ $key->judul }}</h2>
+    <p>{{ substr(strip_tags($key->isi), 0, 200) }}</p>
 
   </div><!-- /.col-lg-4 -->
-  <div class="col-lg-4">
-
-    <h2>Akuntansi</h2>
-    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-
-  </div><!-- /.col-lg-4 -->
-  <div class="col-lg-4">
-
-    <h2>Pemasaran</h2>
-    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-
-  </div><!-- /.col-lg-4 -->
+  @endforeach  
 </div><!-- /.row -->
 <hr>
 <!-- berita -->

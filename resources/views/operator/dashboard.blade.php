@@ -22,7 +22,7 @@ $transaksi = App\Transaksi::whereDate('tanggal', '=', Carbon::today()->toDateStr
       <div class="info-box">
         <span class="info-box-icon bg-red"><i class="fa fa-users"></i></span>
         <div class="info-box-content">
-          <span class="info-box-text">Hari Ini</span>
+          <span class="info-box-text">Total User</span>
           <span class="info-box-number">{{ $usr }}</span>
         </div>
       </div>
@@ -31,7 +31,7 @@ $transaksi = App\Transaksi::whereDate('tanggal', '=', Carbon::today()->toDateStr
       <div class="info-box">
         <span class="info-box-icon bg-yellow"><i class="fa fa-bars"></i></span>
         <div class="info-box-content">
-          <span class="info-box-text">Kemarin</span>
+          <span class="info-box-text">Total Kategori</span>
           <span class="info-box-number">{{ $cat }}</span>
         </div>
       </div>
@@ -40,7 +40,7 @@ $transaksi = App\Transaksi::whereDate('tanggal', '=', Carbon::today()->toDateStr
       <div class="info-box">
         <span class="info-box-icon bg-blue"><i class="fa fa-tasks"></i></span>
         <div class="info-box-content">
-          <span class="info-box-text">Minggu Ini</span>
+          <span class="info-box-text">Total Jadwal</span>
           <span class="info-box-number">{{ $jad }}</span>
         </div>
       </div>
@@ -49,7 +49,7 @@ $transaksi = App\Transaksi::whereDate('tanggal', '=', Carbon::today()->toDateStr
       <div class="info-box">
         <span class="info-box-icon bg-green"><i class="fa fa-money"></i></span>
         <div class="info-box-content">
-          <span class="info-box-text">Bulan Ini</span>
+          <span class="info-box-text">Pendapatan</span>
           <span class="info-box-number">{{ $tra }}</span>
         </div>
       </div>

@@ -44,6 +44,10 @@ Route::get('galeri',function ()
   {
     return view('errors.coming-soon');
  });
+Route::get('klienkami',function ()
+  {
+    return view('users.klienkami.home');
+ });
 Route::get('/kontak', 'IndexController@kontak');  
 Route::post('/kontak', 'IndexController@kontak_save');  
 
@@ -209,6 +213,11 @@ Route::group(['prefix' => 'operator'], function(){
       Route::get('/', 'opController@sertifikat');
       Route::get('/{id}', 'opController@sertifikat_show');
       Route::post('/', 'opController@sertifikat_save');
+    });
+     Route::group(['prefix' => 'halaman'], function(){
+      Route::get('/', 'opController@halaman'); 
+      Route::get('{id}', 'opController@halaman_show'); 
+      Route::post('/', 'opController@halaman_save');
     });
   });
 });

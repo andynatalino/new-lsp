@@ -2,6 +2,15 @@
 @section('pageTitle', 'Profil - Konfirmasi')
 
 @section('content')
+@if(session('notifikasi'))
+
+<p></p>
+<div class="alert alert-danger" role="alert">
+	<strong>Notifikasi!</strong>
+	{{ session('notifikasi')}} 
+</div>
+@endif
+
 <h5 class="mt-4 mb-3">Konfirmasi pembayaran pendaftaran skema</h5>
 <form method="post" action="{{url('profil/konfirmasi')}}" enctype="multipart/form-data">
 	<div class="form-group row">
@@ -68,8 +77,9 @@
 	</div>
 	<div class="form-group row col-2">
 		<input type="hidden" name="id" value="{{ $transaksi->id }}">
+		<input type="hidden" name="id_jadwal" value="{{ $transaksi->id_jadwal }}">
 		{{ csrf_field()}}
-		<button type="submit" class="btn btn-primary ">Konfirmasi Pembayaran</button>
+		<button type="submit" class="btn btn-primary">Konfirmasi Pembayaran</button>
 	</div>
 </form>
 @endsection

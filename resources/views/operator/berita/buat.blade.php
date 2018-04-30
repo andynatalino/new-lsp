@@ -30,7 +30,7 @@
        * Wajib diisi
      </div>
      <div class="box-footer">
-      <button type="submit" class="btn btn-primary">Edit Berita</button>
+      <button type="submit" class="btn btn-primary">Tambah Berita</button>
       <a href="{{ url('operator/berita') }}"><button type="button" class="btn btn-warning">Cancel</button></a>
     </div>
     </form>

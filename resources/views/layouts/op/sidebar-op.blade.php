@@ -3,7 +3,7 @@ $ss = App\Setting::first();
 ?>
 <aside class="main-sidebar">
     <section class="sidebar">
-       <div class="user-panel">
+     <div class="user-panel">
         <div class="pull-left">                                
             @if($ss->color_operator == 'skin-red-light') 
             <h4>{{ Auth::user()->name }}</h4>
@@ -32,6 +32,7 @@ $ss = App\Setting::first();
         <li><a href="{{ url('operator/kategori') }}"><i class="fa fa-wpforms"></i>Kategori</a></li>
         <li><a href="{{ url('operator/berita') }}"><i class="fa fa-newspaper-o"></i>Berita</a></li>
         <li><a href="{{ url('operator/pembayaran') }}"><i class="fa fa-credit-card"></i>Bank</a></li>
+        <li><a href="{{ url('operator/halaman') }}"><i class="fa fa-file-code-o"></i>Halaman Kolum</a></li>
        <!--  <li class="treeview">
             <a href="{{ url('operator/pembayaran') }}"><i class="fa fa-credit-card"></i><span>Tipe pembayaran</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">

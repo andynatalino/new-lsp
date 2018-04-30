@@ -11,7 +11,7 @@
           <a class="nav-link text-white" href="{{ url('sertifikasi')}}">Sertifikasi</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="{{ url('berita')}}">Klien Kami</a>
+          <a class="nav-link text-white" href="{{ url('klienkami')}}">Klien Kami</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white" href="{{ url('kontak')}}">Kontak</a>
