@@ -164,12 +164,12 @@ public function checkoutSave(Request $request){
  $transaksi->id_jadwal = $request->id_jadwal;
  $transaksi->id_userdata = $ud->id;
  $transaksi->kode_transfer = $jadwal->biaya + rand(100, 999);
-
- if ($request->tunai == 'tunai') {
+  
+ if ($request->pembayaran == 'tunai') {
   $transaksi->status = 2;
   $transaksi->tunai = 1;
-  $transaksi->id_pembayaran = null ;
-}else{
+  $transaksi->id_pembayaran = null;
+}else{  
   $transaksi->tunai = null;
   $transaksi->status = 1;  
   $transaksi->id_pembayaran = $request->pembayaran;

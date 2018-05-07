@@ -5,6 +5,9 @@
   <?php
   $meta = App\Setting::first();  
   ?>
+ @if(Request::is('/')) <title>Sakasakti - Lembaga Sertifikasi Profesi</title> 
+@else <title>@yield('pageTitle') - Sakasakti</title> 
+@endif
 <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -33,8 +36,6 @@
 @else <meta name="twitter:description" content="@yield('description')">
 @endif
   <meta name="twitter:image:src" content="{{ url('assets/logo/'.$meta->logo) }}">
-
-  <title>@yield('pageTitle') - Sakasakti</title>
 
   <link href="{{ url('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
   <link href="{{ url('vendor/modern-business.min.css')}}" rel="stylesheet">

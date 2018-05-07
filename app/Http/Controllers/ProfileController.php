@@ -65,11 +65,12 @@ class ProfileController extends Controller
       if ($request->jumlah_transfer < $jadwal->biaya) {
           return back()->with('notifikasi', 'Jumlah Transfer Kurang!');
       }else{
-        dd('pas coy');
+        // dd('pas coy');
+       $transaksi->tunai = null;
        $transaksi->kode_transfer = $request->jumlah_transfer;
      }
 
-     die();
+    //  die();
      $transaksi->status = 2;
      $transaksi->photo_bukti = '';
      if($request->hasFile('photo_bukti')){
@@ -81,12 +82,10 @@ class ProfileController extends Controller
 
     return redirect(url('profil/order'))->with('sukses', 'Anda telah mengupload bukti transaksi! 1x24 jam Operator akan memverifikasi bukti Anda');
   }
-  public function change_photo($slug){
-
-   $aa = Setting::get();
+  public function change_photo(){
    $id = Auth::user()->id;
    $user = User::find($id);
-   return view('users.profil.change.photo', ['user' => $user, 'aa' => $aa]);
+   return view('users.profil.change.photo', ['user' => $user]);
  }
 
  public function change_photo_save(Request $request){
@@ -106,7 +105,7 @@ class ProfileController extends Controller
   return back()->with('sukses', 'Anda berhasil mengubah foto!');
 }
 
-public function change_email($slug){
+public function change_email(){
 
  $aa = Setting::get();
  $id = Auth::user()->id;
@@ -127,7 +126,7 @@ public function change_email_save(Request $request){
  return back()->with('sukses', 'Anda berhasil mengubah email!');
 }
 
-public function change_password($slug){
+public function change_password(){
 
  $aa = Setting::get();
  $id = Auth::user()->id;
@@ -149,7 +148,7 @@ public function change_password_save(Request $request){
 }
 }
 
-public function change_data($slug){
+public function change_data(){
  $aa = Setting::get();
  $id = Auth::user()->id;
  $user = User::find($id);
@@ -186,12 +185,9 @@ public function order(){
 public function pdf($id){		
 
  $ss = Setting::first();
- $id_user = Transaksi::find($id)->id_user;			
- $transaksi = Transaksi::where(['id' => $id])->first();						
- if($id_user == Auth::user()->id){					
-  $kategori = Kategori::where('id', $transaksi->jadwal->id_kategori)->first();
-    		// return response()->json($transaksi,200,[],JSON_PRETTY_PRINT);
-    			// die($transaksi);
+ $transaksi = Transaksi::where(['id' => $id])->first(); 		
+ if($transaksi->id_user == Auth::user()->id){					
+  $kategori = Kategori::where('id', $transaksi->jadwal->id_kategori)->first();    		
   return view('users.profil.pdf', ['transaksi' => $transaksi, 'ss' => $ss, 'kategori' => $kategori]);	
 }else{
   return redirect(url('/'));

@@ -1,79 +1,37 @@
-@extends('layouts.users.app')
+@extends('layouts.users.app-new')
 @section('pageTitle', 'Profil - Change Password')
 
 @section('content')
-<div class="grid">
-	<div class="row cells12">		
-		<div class="cell colspan4">
-			<div class="panel @foreach($aa as $ss) @if($ss->color_web == 'blue') navy @elseif($ss->color_web == 'red') danger @elseif($ss->color_web == 'green') success @elseif($ss->color_web == 'orange') warning @endif @endforeach">
-				<div class="heading">				
-					<div class="title">Foto</div>
+<h4 class="mt-4 mb-3">Profil</h4>
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm">
+			<form method="post" action="{{ url('profil/'.$user->username.'/change-password')}}">
+				{{{ csrf_field()}}}
+				<label>Password Lama</label>
+				<div>
+					<input class="form-control" type="password" required name="oldpw">
+					
 				</div>
-				<div class="content">
-					<div class="image-container bordered image-format-hd">
-						<div class="frame">
-							<img src="{{ url('assets/photo/'.$user->photo)}}"
-							onerror="this.src='{{ url('assets/images/default-user.png')}}';">
-						</div>
-					</div>
+				<label>Password Baru</label>
+				<div>
+					<input class="form-control" type="password" required name="newpw">
+					
 				</div>
+				<label>Ulangi Password Baru</label>
+				<div>
+					<input class="form-control" type="password" required name="confnewpw">
+					
+				</div>
+				<br><br>
+				<button type="submit" class="btn btn-primary">Ubah Password</button>
+				<input class="btn btn-warning" type="reset" value="Reset">
+			</form>
+			<hr>
+			<div class="text-center">
+				<a href="{{ url('profil')}}"><button class="btn btn-primary">Profil</button></a> <a href="{{ url('profil/change-photo')}}"><button class="btn btn-primary">Foto</button></a> <a href="{{ url('profil/change-data')}}"><button class="btn btn-primary">Data</button></a> <a href="{{ url('profil/change-email')}}"><button class="btn btn-primary">Email</button></a>
 			</div>
-			<hr class="thin">
-			<div class="listview set-border padding10" data-role="listview">
-				<div class="list" onclick="location.href = '{{ url('profil')}}';">
-					<img src="{{ url('assets/images/my-profil.png')}}" class="list-icon">
-					<span class="list-title">My Profil</span>
-				</div>
-				<div class="list" onclick="location.href = '{{ url('profil/'.$user->username.'/change-photo')}}';">
-					<img src="{{ url('assets/images/2017092714005059cbaf12b54b3.png')}}" class="list-icon">
-					<span class="list-title">Ubah Foto</span>
-				</div>
-				<div class="list" onclick="location.href = '{{ url('profil/'.$user->username.'/change-email')}}';">
-					<img src="{{ url('assets/images/2017092714005059cbaf12b54b4.png')}}" class="list-icon">
-					<span class="list-title">Ubah Email</span>
-				</div>
-				<div class="list active" onclick="location.href = '{{ url('profil/'.$user->username.'/change-password')}}';">
-					<img src="{{ url('assets/images/2017092714005059cbaf12b54b5.png')}}" class="list-icon">
-					<span class="list-title">Ubah Password</span>
-				</div>
-				<div class="list" onclick="location.href = '{{ url('profil/'.$user->username.'/change-data')}}';">
-					<img src="{{ url('assets/images/2017092714005059cbaf12b54b6.png')}}" class="list-icon">
-					<span class="list-title">Ubah Data</span>
-				</div>
-			</div>
-		</div>
-		<div class="cell colspan8">
-			<div class="row cells8">
-				<div class="panel @foreach($aa as $ss) @if($ss->color_web == 'blue') navy @elseif($ss->color_web == 'red') danger @elseif($ss->color_web == 'green') success @elseif($ss->color_web == 'orange') warning @endif @endforeach">
-					<div class="heading">
-						<span class="title">Password</span>
-					</div>
-					<div class="content" style="padding: 10px 10px 10px 10px;">
-						<div class="cell">
-							<form method="post" action="{{ url('profil/'.$user->username.'/change-password')}}">
-								{{{ csrf_field()}}}
-								<label>Password Lama</label>
-								<div class="input-control password full-size" data-role="input">
-									<input type="password" required name="oldpw">
-									<button class="button helper-button reveal"><span class="mif-shareable"></span></button>
-								</div>
-								<label>Password Baru</label>
-								<div class="input-control password full-size" data-role="input">
-									<input type="password" required name="newpw">
-									<button class="button helper-button reveal"><span class="mif-shareable"></span></button>
-								</div>
-								<label>Ulangi Password Baru</label>
-								<div class="input-control password full-size" data-role="input">
-									<input type="password" required name="confnewpw">
-									<button class="button helper-button reveal"><span class="mif-shareable"></span></button>
-								</div>
-								<button type="submit" class="button"><img src="{{ url('assets/images/check.png')}}"> Ubah Password</button>
-								<input type="reset" value="Reset">
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>		
 		</div>
 	</div>
 </div>

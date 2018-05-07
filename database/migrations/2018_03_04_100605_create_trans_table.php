@@ -20,7 +20,7 @@ class CreateTransTable extends Migration
         $table->string('user_id');
         $table->string('jadwal');
         $table->string('kategori');
-        $table->string('pembayaran');        
+        $table->string('pembayaran')->nullable();   
         $table->string('id_userdata');
         $table->datetime('tanggal_pesan');
         $table->datetime('tanggal_konfirmasi');
@@ -30,7 +30,7 @@ class CreateTransTable extends Migration
         $table->string('kode_transfer');
         $table->string('photo_bukti');
 
-        $table->string('tunai');
+        $table->string('tunai')->nullable();
         $table->string('status')->nullable();
         $table->string('notifikasi')->default(1)->nullable();
         $table->timestamps();

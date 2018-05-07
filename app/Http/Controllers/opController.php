@@ -410,6 +410,7 @@ public function konfirmasi_update($id){
   $trans->tunai = $transaksi->tunai;  
   $trans->notifikasi = 0;
 
+  // die('berhasil');
   $transaksi->delete();
   $trans->save();
   return redirect('operator/konfirmasi');

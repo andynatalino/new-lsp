@@ -1,70 +1,30 @@
-@extends('layouts.users.app')
+@extends('layouts.users.app-new')
 @section('pageTitle', 'Profil - Change Email')
 
 @section('content')
-<div class="grid">
-	<div class="row cells12">		
-		<div class="cell colspan4">
-			<div class="panel @foreach($aa as $ss) @if($ss->color_web == 'blue') navy @elseif($ss->color_web == 'red') danger @elseif($ss->color_web == 'green') success @elseif($ss->color_web == 'orange') warning @endif @endforeach">
-				<div class="heading">				
-					<div class="title">Foto</div>
+<h4 class="mt-4 mb-3">Profil</h4>
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm">			
+			<form method="post" action="{{ url('profil/'.$user->username.'/change-email')}}">
+				{{ csrf_field()}}
+				<div class="input-control text full-size">					
+					<input type="email" class="form-control" name="email" placeholder="Enter email" required>
 				</div>
-				<div class="content">
-					<div class="image-container bordered image-format-hd">
-						<div class="frame">
-							<img src="{{ url('assets/photo/'.$user->photo)}}"
-							onerror="this.src='{{ url('assets/images/default-user.png')}}';">
-						</div>
-					</div>
+				<br>
+				<div class="text-center">
+					<button type="submit" class="btn btn-primary">Ubah Email</button>
 				</div>
-			</div>
-			<hr class="thin">
-			<div class="listview set-border padding10" data-role="listview">
-				<div class="list" onclick="location.href = '{{ url('profil')}}';">
-					<img src="{{ url('assets/images/my-profil.png')}}" class="list-icon">
-					<span class="list-title">My Profil</span>
-				</div>
-				<div class="list" onclick="location.href = '{{ url('profil/'.$user->username.'/change-photo')}}';">
-					<img src="{{ url('assets/images/2017092714005059cbaf12b54b3.png')}}" class="list-icon">
-					<span class="list-title">Ubah Foto</span>
-				</div>
-				<div class="list active" onclick="location.href = '{{ url('profil/'.$user->username.'/change-email')}}';">
-					<img src="{{ url('assets/images/2017092714005059cbaf12b54b4.png')}}" class="list-icon">
-					<span class="list-title">Ubah Email</span>
-				</div>
-				<div class="list" onclick="location.href = '{{ url('profil/'.$user->username.'/change-password')}}';">
-					<img src="{{ url('assets/images/2017092714005059cbaf12b54b5.png')}}" class="list-icon">
-					<span class="list-title">Ubah Password</span>
-				</div>
-				<div class="list" onclick="location.href = '{{ url('profil/'.$user->username.'/change-data')}}';">
-					<img src="{{ url('assets/images/2017092714005059cbaf12b54b6.png')}}" class="list-icon">
-					<span class="list-title">Ubah Data</span>
-				</div>
-			</div>
-		</div>
-		<div class="cell colspan8">
-			<div class="row cells8">
-				<div class="panel @foreach($aa as $ss) @if($ss->color_web == 'blue') navy @elseif($ss->color_web == 'red') danger @elseif($ss->color_web == 'green') success @elseif($ss->color_web == 'orange') warning @endif @endforeach">
-					<div class="heading">
-						<span class="title">Email</span>
-					</div>
-					<div class="content" style="padding: 10px 10px 10px 10px;">
-						<div class="cell">
-							<label>Email Baru</label>
-							<form method="post" action="{{ url('profil/'.$user->username.'/change-email')}}">
-								{{ csrf_field()}}
-								<div class="input-control text full-size">
-									<input type="email" required name="email">
-								</div>
-								<button type="submit" id="btn" class="button"><img src="{{ url('assets/images/check.png')}}"> Ubah Email</button>
-							</form>
-						</div>
-					</div>
-				</div>
+			</form>
+			<hr>
+			<div class="text-center">
+				<a href="{{ url('profil')}}"><button class="btn btn-primary">Profil</button></a> 	<a href="{{ url('profil/change-photo')}}"><button class="btn btn-primary">Foto</button></a> <a href="{{ url('profil/change-data')}}"><button class="btn btn-primary">Data</button></a> <a href="{{ url('profil/change-password')}}"><button class="btn btn-primary">Password</button></a> <a href="{{ url('profil/change-email')}}">
 			</div>
 		</div>
 	</div>
 </div>
+
 @if(session('sukses'))
 <script type="text/javascript">
 	$(function(){

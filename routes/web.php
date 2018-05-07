@@ -60,22 +60,22 @@ Route::group(['prefix' => 'tentang'], function(){
 });
 
 Route::group(['prefix' => 'profil'], function(){
-  // Route::get('/', 'ProfileController@index');
-  Route::get('/',function ()
-  {
-    return view('errors.coming-soon');
-  });
+  Route::get('/', 'ProfileController@index');
+  // Route::get('/',function ()
+  // {
+  //   return view('errors.coming-soon');
+  // });
   Route::get('/konfirmasi', 'ProfileController@konfirmasi');
   Route::post('/konfirmasi', 'ProfileController@konfirmasiSave');
   Route::get('/order', 'ProfileController@order');
-  Route::get('/{slug}/change-photo', 'ProfileController@change_photo');
-  Route::post('/{slug}/change-photo', 'ProfileController@change_photo_save');
-  Route::get('/{slug}/change-email', 'ProfileController@change_email');
-  Route::post('/{slug}/change-email', 'ProfileController@change_email_save');
-  Route::get('/{slug}/change-password', 'ProfileController@change_password');
-  Route::post('/{slug}/change-password', 'ProfileController@change_password_save');
-  Route::get('/{slug}/change-data', 'ProfileController@change_data');
-  Route::post('/{slug}/change-data', 'ProfileController@change_data_save');
+  Route::get('/change-photo', 'ProfileController@change_photo');
+  Route::post('/change-photo', 'ProfileController@change_photo_save');
+  Route::get('/change-email', 'ProfileController@change_email');
+  Route::post('/change-email', 'ProfileController@change_email_save');
+  Route::get('/change-password', 'ProfileController@change_password');
+  Route::post('/change-password', 'ProfileController@change_password_save');
+  Route::get('/change-data', 'ProfileController@change_data');
+  Route::post('/change-data', 'ProfileController@change_data_save');
   Route::get('{id}/pdf', 'ProfileController@pdf');
   // Route::get('sertifikat', 'ProfileController@sertifikat');
   Route::get('sertifikat',function ()
