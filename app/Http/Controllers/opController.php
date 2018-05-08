@@ -408,6 +408,7 @@ public function konfirmasi_update($id){
     $trans->photo_bukti = $transaksi->photo_bukti;
   }
   $trans->tunai = $transaksi->tunai;  
+  $trans->status = 0;
   $trans->notifikasi = 0;
 
   // die('berhasil');

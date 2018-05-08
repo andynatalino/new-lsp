@@ -58,26 +58,14 @@
         <!-- /.col -->
         <div class="col-sm-4 invoice-col">
           <address>
-           
-            @if($trans->tunai == 1)
-            <strong>Bukti Pendaftaran</strong><br>
-            @else
-            <strong>Bukti Pembayaran dan Pendaftaran</strong><br>
-            @endif
+            <strong>Bukti Pendaftaran Tunai</strong><br>
            
           </address>
         </div>
         <!-- /.col -->
-        <div class="col-sm-4 invoice-col">
-        @if($trans->tunai == 1)
-          <b>ID Pembayaran :</b> {{ $trans->id_transaksi }}<br>
-          <b>Tanggal Pendaftaran :</b> {{ $trans->tanggal_pesan }}<br>
-          <b>Tanggal Konfirmasi :</b> {{ $trans->tanggal_konfirmasi }}<br>
-          <b>ID Userdata :</b> {{ $userdata->id }}<br>
-        @else
+        <div class="col-sm-4 invoice-col">                   
           <b>Kode :</b> {{ $trans->kode_transfer }}<br>
           <b>ID Userdata :</b> {{ $userdata->id }}<br>
-        @endif         
         </div>
         <!-- /.col -->
       </div>
@@ -97,10 +85,10 @@
             </thead>
             <tbody>
               <tr>
-                <td>{{ $trans->kategori }}</td>
-                <td>{{ $trans->jadwal }}</td>
+              <td>{{ $kategori->nama_sp }}</td>
+                <td>{{ $trans->jadwal->nama }}</td>
                 <td>Rp{{ $trans->kode_transfer }}</td>
-                <td>{{ $trans->user }}</td>
+                <td>{{ $trans->user->name }}</td>
               </tr>         
             </tbody>
           </table>
@@ -114,13 +102,7 @@
         <div class="col-xs-6">
           <p class="lead">Tipe Pembayaran : </p>
           <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-            @if($trans->tunai == 1)
-            <b>TUNAI</b>
-            @else
-                Transfer {{$trans->pembayaran}}<br>
-                Atas nama : {{$trans->nama_pengirim}}<br>
-                Sebesar : Rp{{$trans->kode_transfer}}
-            @endif
+           <b>TUNAI</b>
           </p>
         </div>
         <!-- /.col -->
@@ -128,12 +110,8 @@
           <div class="table-responsive">
             <table class="table">
               <tr>
-                <th>Total Biaya :</th>              
-                @if($trans->tunai == 1)
+                <th>Total Biaya :</th>
                 <td>Rp{{ $trans->kode_transfer }} (PENDING)</td>
-                @else
-                <td>Rp{{ $trans->kode_transfer }} (LUNAS)</td>
-                @endif
               </tr>
             </table>
             <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">

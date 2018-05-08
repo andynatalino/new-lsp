@@ -10,6 +10,7 @@ use App\Setting;
 use App\Kategori;
 use App\Transaksi;
 use App\Jadwal;
+use App\Userdata;
 use App\trans;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -177,26 +178,49 @@ public function change_data_save(Request $request){
 }
 
 public function order(){
- $transaksi = Transaksi::where(['id_user' => Auth::user()->id])->orderBy('id','desc')->paginate(10); 
- $trans = trans::where(['user' => Auth::user()->id])->orderBy('id','desc')->paginate(10);      
- return view('users.profil.order', ['transaksi' => $transaksi, 'trans' => $trans]);	
+ $transaksi = Transaksi::where(['id_user' => Auth::user()->id])->orderBy('id','desc')->paginate(10);     
+ return view('users.profil.order', ['transaksi' => $transaksi]);	
 }
 
-public function pdf($id){		
+public function transaksisaya()
+{
+  $trans = trans::where(['user_id' => Auth::user()->id])->orderBy('id','desc')->paginate(10);  
+  return view('users.profil.transaksisaya', ['trans' => $trans]);
+}
 
+public function pdf(Request $request){		
+$id = $request->id;
  $ss = Setting::first();
- $transaksi = Transaksi::where(['id' => $id])->first(); 		
- if($transaksi->id_user == Auth::user()->id){					
-  $kategori = Kategori::where('id', $transaksi->jadwal->id_kategori)->first();    		
-  return view('users.profil.pdf', ['transaksi' => $transaksi, 'ss' => $ss, 'kategori' => $kategori]);	
+ $trans = trans::where(['id_transaksi' => $id])->where('notifikasi','2')->orWhere('tunai','1')->first(); 	
+  // dd($trans);	
+ $userdata = Userdata::find($trans->id_userdata);
+ if(!$trans){					      		
+   return redirect(url('/'));
+  	
 }else{
-  return redirect(url('/'));
+  return view('users.profil.pdf', ['trans' => $trans, 'ss' => $ss, 'userdata' => $userdata]);
 }
 }
+
+public function pdftunai(Request $request){		
+  $id = $request->id;
+   $ss = Setting::first();
+   $trans = transaksi::where(['id' => $id])->where('tunai','1')->first(); 	
+    // dd($trans);	
+  $kategori = Kategori::find($trans->id_kategori);
+   $userdata = Userdata::find($trans->id_userdata);
+   if(!$trans){					      		
+     return redirect(url('/'));
+      
+  }else{
+    return view('users.profil.pdf-tunai', ['trans' => $trans, 'ss' => $ss, 'userdata' => $userdata, 'kategori' => $kategori]);
+  }
+  }
 
 public function sertifikat()
 {
-  dd('ha');
+  $trans = trans::where(['user_id' => Auth::user()->id])->orWhere('status','1')->orWhere('status','2')->paginate(10);  
+  return view('users.profil.sertifikat', ['trans' => $trans]);
 }
 
 }

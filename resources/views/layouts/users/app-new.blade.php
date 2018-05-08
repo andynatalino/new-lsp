@@ -55,7 +55,9 @@
 
   
   @if(Auth::check())
-  <?php $trans = App\trans::where('user_id', Auth::user()->id)->orderBy('notifikasi','1')->orderBy('created_at', 'desc')->first();;
+  <?php 
+  $trans = App\trans::where('user_id', Auth::user()->id)->where('notifikasi','1')->orderBy('created_at', 'desc')->first();  
+  $pembayaran = App\trans::where('user_id', Auth::user()->id)->orderBy('status','0')->orderBy('created_at', 'desc')->first();
   ?>
 
   @if($trans)
@@ -92,6 +94,40 @@
             <input type="hidden" name="id" value="{{ $trans->id }}">            
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">OK</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  @else
+
+  @endif
+  @endif
+
+  @if($pembayaran)
+  @if($pembayaran->status == "0")
+  <!-- Modal -->
+
+  <div class="modal fade" id="overlay" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">⚠️ Notifikasi</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Yth. Bapak/Ibu <b>{{ Auth::user()->name }}</b>,
+           Pembayaran Anda telah kami konfirmasi dipersilahkan untuk cetak bukti Anda.
+        </div>
+        <form method="post" action="{{ url('statuspembayaran')}}">
+          {{csrf_field()}}          
+          <div class="modal-footer">          
+            <input type="hidden" name="id" value="{{ $trans->id }}">            
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">CETAK BUKTI</button>
           </div>
         </form>
       </div>

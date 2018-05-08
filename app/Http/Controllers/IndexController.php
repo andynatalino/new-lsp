@@ -73,11 +73,19 @@ public function galeri(){
 public function notifikasi(Request $request)
 {
   $trans = trans::find($request->id);
-  $trans->user_id = 0;
   $trans->notifikasi = 2;
   $trans->save();
 
   return redirect(url('profil/sertifikat'));
+}
+
+public function statuspembayaran(Request $request)
+{
+  $trans = trans::find($request->id);
+  $trans->status = null;
+  $trans->save();
+
+  return redirect(url('profil/transaksi'));
 }
 
 }

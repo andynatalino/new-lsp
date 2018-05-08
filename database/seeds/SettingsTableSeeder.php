@@ -14,18 +14,22 @@ class SettingsTableSeeder extends Seeder
     	DB::table('settings')->insert([    		
     		'nama_web' => 'Website',
     		'title' => 'Title',
-    		'email' => 'Example@email.com',
+            'email' => 'Example@email.com',
+            'alamat' => 'alamat',
+            'telp' => '000',
+            'jam_buka' => 'jam_buka',
+            'maps_location' => 'maps_location',
             'meta_title' => 'title',
             'meta_description' => 'description',
             'meta_keywords' => 'keywords',
             'google_site_verification' => 'google',
             'bing' => 'bing',
-    		'color_web' => 'blue',
     		'color_admin' => 'skin-blue',
     		'color_operator' => 'skin-blue',
             'facebook' => 'facebook',
             'twitter' => 'twitter',
             'instagram' => 'instagram',
+            'youtube' => 'youtube',
     	]);
     }
 }

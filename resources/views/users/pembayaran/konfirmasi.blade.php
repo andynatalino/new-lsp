@@ -20,11 +20,14 @@
 					Ketentuan Pembayaran Tunai Setelah Anda memilih Pembayaran Tunai maka Anda akan mendapatkan bukti pemesanan, Anda bisa membawanya ke Kantor kami.
 				</div>
 				<div class="form-group text-center">
-					<form action="{{ url('checkout/delete/'.$transaksi->id)}}" method="post">
-						<a href="{{ url('profil/konfirmasi') }}"><button class="btn btn-primary">Download Bukti</button></a> 
-						<a href="{{ url('profil/transaksisaya') }}"><button class="btn btn-success">Lihat Transaksi Saya</button></a>
-
-						<button type="submit" class="btn btn-danger">Batalkan Transaksi</button>
+				<form method="post" action="{{ url('pdf-tunai')}}" target="_blank">
+					{{csrf_field()}}
+					<input type="hidden" value="{{$transaksi->id}}" name="id">
+					<button class="btn btn-primary">Cetak Bukti</button>
+				</form>
+				<hr>
+					<form action="{{ url('checkout/delete/'.$transaksi->id)}}" method="post">											
+						<button type="submit" onclick="return confirm('Apa Anda yakin membatalkan transaksi?')" class="btn btn-danger">Batalkan Transaksi</button>
 						<input type="hidden" name="_method" value="DELETE">
 						{{ csrf_field() }}
 					</form>

@@ -1,25 +1,7 @@
 <?php
-use Faker\Factory as Faker;
 Auth::routes();
-Route::get('insert',function ()
-{
-  $i = 1;
-  $faker = Faker::create();
-  foreach (range(1,100) as $index) {
-    DB::table('users')->insert([            
-      'number' => $i++,
-      'username' => $faker->name,
-      'name' => $faker->name,
-      'email' => $faker->email,
-      'password' => '$2y$10$CmhtuUx3WMi2xQIoRIQn9O1/mLKdLwI0/Cns0SLfUXE0I1bhmtqLO',   
-      'role' => '1',
-    ]);
-  }
-
-  die('berhasil');
-
-});
 Route::post('notifikasi', 'IndexController@notifikasi');
+Route::post('statuspembayaran', 'IndexController@statuspembayaran');
 Route::get('logout',function ()
 {
  return redirect(url('login'));
@@ -58,7 +40,9 @@ Route::group(['prefix' => 'tentang'], function(){
  });
   Route::get('/{slug}', 'IndexController@tentang_show');
 });
-
+Route::post('pdf', 'ProfileController@pdf');
+Route::post('pdf-tunai', 'ProfileController@pdftunai');
+Route::post('pdf-tunai2', 'ProfileController@pdftunai2');
 Route::group(['prefix' => 'profil'], function(){
   Route::get('/', 'ProfileController@index');
   // Route::get('/',function ()
@@ -76,16 +60,8 @@ Route::group(['prefix' => 'profil'], function(){
   Route::post('/change-password', 'ProfileController@change_password_save');
   Route::get('/change-data', 'ProfileController@change_data');
   Route::post('/change-data', 'ProfileController@change_data_save');
-  Route::get('{id}/pdf', 'ProfileController@pdf');
-  // Route::get('sertifikat', 'ProfileController@sertifikat');
-  Route::get('sertifikat',function ()
-  {
-    return view('errors.coming-soon');
-  });
-  Route::get('transaksi',function ()
-  {
-    return view('errors.coming-soon');
-  });
+  Route::get('sertifikat', 'ProfileController@sertifikat');
+  Route::get('transaksi', 'ProfileController@transaksisaya');
 });
 Route::get('checkout', 'SertifikasiController@cek');
 Route::delete('checkout/delete/{id}', 'SertifikasiController@checkout_delete');

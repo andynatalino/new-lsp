@@ -94,12 +94,16 @@ class adminController extends Controller
       $s->nama_web = $request->nama;
       $s->title = $request->title;
       $s->email = $request->email;
-      $s->color_web = $request->webcolor;
+      $s->alamat = $request->alamat;
+      $s->telp = $request->telp;
+      $s->jam_buka = $request->jam_buka;
+      $s->maps_location = $request->maps_location;
       $s->color_admin = $request->admincolor;
       $s->color_operator = $request->opcolor;
       $s->facebook = $request->facebook;
       $s->twitter = $request->twitter;
       $s->instagram = $request->instagram;
+      $s->youtube = $request->youtube;
       $s->meta_title = $request->meta_title;
       $s->meta_description = $request->meta_description;
       $s->meta_keywords = $request->meta_keywords;

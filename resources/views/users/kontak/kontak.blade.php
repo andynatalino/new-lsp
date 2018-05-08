@@ -27,12 +27,12 @@
 			<br>
 		</p>
 		<p>
-			No. Telp: {{ $ss->no_telp }}
+			No. Telp: {{ $ss->telp }}
 		</p>
 		<p>
 			Email:
 			<a href="mailto:name@example.com">{{ $ss->email }}
-			</a>
+			</a>FFF
 		</p>
 		<p>
 			Jam Buka: {{ $ss->jam_buka }}
