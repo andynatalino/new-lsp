@@ -34,13 +34,13 @@
               </td>
               <td>
                <div class="form-group">
-                <button type="button" class="btn btn-info">Edit</button>
+               <a href="{{ url('admin/user/'.$key->id.'/edit')}}" class="btn btn-info">Edit</a> 
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">
                   Delete
                 </button>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
+                <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
                  Ganti Password
-               </button>
+               </button> -->
              </div>  
            </td>
          </tr>

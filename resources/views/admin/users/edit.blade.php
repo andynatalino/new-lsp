@@ -1,6 +1,6 @@
 @extends('layouts.admin.app-admin')
 
-@section('pageTitle', 'Buat Users')
+@section('pageTitle', 'Edit Users')
 
 @section('content')
 @if(count($errors) > 0 )
@@ -22,15 +22,15 @@
           {{ csrf_field() }}
           <div class="form-group">
             <label>Username</label>
-            <input type="text" required class="form-control" name="username" value="{{ old('username') }}" placeholder="Username">
+            <input type="text" required class="form-control" name="username" value="{{ $users->username }}" disabled placeholder="Username">
           </div>
           <div class="form-group">
             <label>Nama Lengkap</label>
-            <input type="text" required class="form-control"  name="name" value="{{ old('name') }}" placeholder="Nama Lengkap">
+            <input type="text" required class="form-control"  name="name" value="{{ $users->name }}" placeholder="Nama Lengkap">
           </div>
           <div class="form-group">
             <label>Email</label>
-            <input type="email" required class="form-control" name="email" value="{{ old('email') }}" placeholder="Email">
+            <input type="email" required class="form-control" name="email" value="{{ $users->email }}" placeholder="Email">
           </div>         
           <div class="form-group">
             <label>Password</label>
@@ -45,7 +45,7 @@
           </div>
           <div class="form-group">
             <label>Jenis Kelamin</label>
-            <select class="form-control" name="gender" value="{{ old('gender') }}" style="width: 100%;">
+            <select class="form-control" name="gender" value="{{ $users->gender }}" style="width: 100%;">
               <option value="Laki - Laki">Laki - Laki</option>
               <option value="Perempuan">Perempuan</option>
             </select>
@@ -54,7 +54,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <label>Tempat Lahir</label>
-            <input type="text" required class="form-control" name="place" value="{{ old('place') }}" placeholder="Tempat Lahir">
+            <input type="text" required class="form-control" name="place" value="{{ $users->place }}" placeholder="Tempat Lahir">
           </div>
           <div class="form-group">
             <label>Tanggal Lahir</label>
@@ -62,24 +62,24 @@
               <div class="input-group-addon">
                 <i class="fa fa-calendar"></i>
               </div>
-              <input type="text" name="date" value="{{ old('date') }}" class="form-control pull-right" id="datepicker">
+              <input type="text" name="date" value="{{ $users->date }}" class="form-control pull-right" id="datepicker">
             </div>
           </div>
           <div class="form-group">
             <label>Agama</label>
-            <input type="text" required class="form-control" name="religion" value="{{ old('religion') }}" placeholder="Agama">
+            <input type="text" required class="form-control" name="religion" value="{{ $users->religion }}" placeholder="Agama">
           </div>
           <div class="form-group">
             <label>Telp</label>
-            <input type="number" required class="form-control" name="telp" value="{{ old('telp') }}" placeholder="Telp">
+            <input type="number" required class="form-control" name="telp" value="{{ $users->telp }}" placeholder="Telp">
           </div>
           <div class="form-group">
             <label>Alamat</label>
-            <textarea class="form-control" name="address" rows="3" placeholder="Alamat">{{ old('address') }}</textarea>
+            <textarea class="form-control" name="address" rows="3" placeholder="Alamat">{{ $users->address }}</textarea>
           </div>
           <div class="form-group">
             <label>Status</label>
-            <select class="form-control" name="role" value="{{ old('role') }}" style="width: 100%;">
+            <select class="form-control" name="role" value="{{ $users->role }}" style="width: 100%;">
               <option value="1">User</option>
               <option value="2">Admin</option>
               <option value="3">Operator</option>
@@ -93,7 +93,7 @@
         </div>
       </div>
       <div class="box-footer">
-        <button type="submit" class="btn btn-primary">Buat User</button>
+        <button type="submit" class="btn btn-primary">Edit User</button>
         </form>
         <a href="{{ url('admin/user')}}"><button class="btn btn-warning">Cancel</button></a>
       </div>

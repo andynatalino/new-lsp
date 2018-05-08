@@ -1,4 +1,4 @@
-@extends('layouts.users.app')
+@extends('layouts.users.app-new')
 @section('pageTitle', 'Galeri')
 @section('description', 'Share text and photos with your friends and have fun')
 @section('content')

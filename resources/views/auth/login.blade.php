@@ -1,6 +1,6 @@
 @extends('layouts.users.app-new')
 @section('pageTitle', 'Login')
-@section('description', 'Share text and photos with your friends and have fun')
+@section('description', 'Login Sakasakti Sertifikasi. ')
 @section('css')
 <link href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css" rel="stylesheet">
 @endsection

@@ -48,24 +48,20 @@ class adminController extends Controller
     public function user_save(Request $request){
       $id = Auth::user()->id;
       $this->validate($request, [
-       'number' => 'unique:users,number,'.$id,
        'username' => 'unique:users,username,'.$id,
        'password' => 'required|string|min:6',
        'repassword' => 'required|same:password',
        'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
      ]);
       $user = new User;
-      $user->number = $request->number;
       $user->username = strtolower(str_slug($request->username));
       $user->name = $request->name;
       $user->email = $request->email;
       $user->password = bcrypt($request->password);
-      $user->instansi = $request->instansi;
       $user->gender = $request->gender;
       $user->place = $request->place;
       $user->date = $request->date;
       $user->religion = $request->religion;
-      $user->citizenship = $request->citizenship;
       $user->telp = $request->telp;
       $user->address = $request->address;
       $user->role = $request->role;
@@ -79,6 +75,12 @@ class adminController extends Controller
       $user->save();
       return redirect(url('admin/user'));
 
+    }
+
+    public function user_edit($id)
+    {
+      $users = User::find($id);
+      return view('admin.users.edit', ['users' => $users]);
     }
 
     public function user_delete($id){

@@ -21,15 +21,8 @@ Route::group(['prefix' => 'pembayaran'], function(){
   Route::delete('/{id}', 'SertifikasiController@pembayaran_delete');
   Route::post('/daftar', 'SertifikasiController@daftar');
 });
-// Route::get('/galeri', 'IndexController@galeri');
-Route::get('galeri',function ()
-  {
-    return view('errors.coming-soon');
- });
-Route::get('klienkami',function ()
-  {
-    return view('users.klienkami.home');
- });
+Route::get('/galeri', 'IndexController@galeri');
+Route::get('/klienkami', 'IndexController@klienkami');  
 Route::get('/kontak', 'IndexController@kontak');  
 Route::post('/kontak', 'IndexController@kontak_save');  
 
@@ -195,5 +188,13 @@ Route::group(['prefix' => 'operator'], function(){
       Route::get('{id}', 'opController@halaman_show'); 
       Route::post('/', 'opController@halaman_save');
     });
+    Route::group(['prefix' => 'klienkami'], function(){
+      Route::get('/', 'opController@klienkami');
+      Route::get('/buat', 'opController@buat_klienkami');
+      Route::post('/', 'opController@save_klienkami');
+      Route::get('/{id}/edit', 'opController@klienkami_edit');
+      Route::post('/{id}', 'opController@klien_update');
+      Route::delete('/{id}', 'opController@klien_delete');
+    });  
   });
 });

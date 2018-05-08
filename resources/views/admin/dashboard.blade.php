@@ -128,13 +128,6 @@ $transaksi = App\Transaksi::whereDate('tanggal', '=', Carbon::today()->toDateStr
     </div>
   </div>  
 </div>
-<div class='col-md-12'>  
-  <div class="box">
-  <div class="box-header with-border">
-    {!! $chart->html() !!}
-  </div>    
-</div>
-</div>
 <div class="row">
   <div class="col-xs-12">
     <div class="box">

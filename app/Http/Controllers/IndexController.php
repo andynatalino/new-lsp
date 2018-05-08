@@ -10,6 +10,7 @@ use App\tentang;
 use App\Setting;
 use App\trans;
 use App\kolum;
+use App\klienkami;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -86,6 +87,12 @@ public function statuspembayaran(Request $request)
   $trans->save();
 
   return redirect(url('profil/transaksi'));
+}
+
+public function klienkami()
+{
+  $klienkami = klienkami::get();
+  return view('users.klienkami.home', ['klienkami' => $klienkami]);
 }
 
 }

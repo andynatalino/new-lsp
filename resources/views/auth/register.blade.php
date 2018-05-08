@@ -4,14 +4,7 @@
 
 @section('content')
 <h4 class="mt-4 mb-3">Daftar Akun</h4>
-@if(session('sukses'))
 
-<p></p>
-<div class="alert alert-success" role="alert">
-	<strong>Notifikasi!</strong>
-	{{ session('sukses')}} 
-</div>
-@endif
 <div class="container">
 	<div class="row">
 		<div class="col-sm">
@@ -23,7 +16,9 @@
 						<td>	
 							<div class="mb-1">						
 								<input type="text" class="form-control" name="username">
-
+								@if($errors->has('username'))	
+									<strong><p class="text-danger">{{ $errors->first('username') }}</p></strong>	
+								@endif
 							</div>
 						</td>
 					</tr>
@@ -33,9 +28,7 @@
 							<div class="mb-1">			
 								<input type="text" class="form-control" name="name">
 								@if($errors->has('name'))
-								<span class="invalid-feedback">
-									<strong>{{ $errors->first('name') }}</strong>
-								</span>
+								<strong><p class="text-danger">Nama harus diisi.</p></strong>							
 								@endif
 							</div>
 						</td>
@@ -46,9 +39,7 @@
 							<div class="mb-1">			
 								<input type="email" class="form-control" name="email">
 								@if($errors->has('email'))
-								<span class="invalid-feedback">
-									<strong>{{ $errors->first('email') }}</strong>
-								</span>
+								<strong><p class="text-danger">Email harus diisi.</p></strong>	
 								@endif
 							</div>
 						</td>
@@ -58,10 +49,8 @@
 						<td>
 							<div class="mb-1">			
 								<input type="password" class="form-control" name="password">
-								@if($errors->has('password'))
-								<span class="invalid-feedback">
-									<strong>{{ $errors->first('password') }}</strong>
-								</span>
+								@if($errors->has('password'))							
+									<strong><p class="text-danger">{{ $errors->first('password') }}</p></strong>							
 								@endif
 							</div>
 						</td>
@@ -71,6 +60,9 @@
 						<td>			
 							<div class="mb-1">						
 								<input type="text" class="form-control" name="place">
+								@if($errors->has('place'))							
+								<strong><p class="text-danger">Tempat Lahir harus diisi.</p></strong>								
+								@endif
 							</div>
 						</td>
 					</tr>
@@ -79,6 +71,9 @@
 						<td>
 							<div class="mb-1">		
 								<input type="date" class="form-control" name="date">
+								@if($errors->has('date'))								
+								<strong><p class="text-danger">Tanggal Lahir harus diisi.</p></strong>								
+								@endif
 							</div>			
 						</td>
 					</tr>
@@ -87,9 +82,13 @@
 						<td>
 							<div class="mb-1">		
 								<select name="gender" class="form-control">
+									<option disabled selected="selected">Pilih...</option>
 									<option value="Laki-Laki">Laki-Laki</option>
 									<option value="Perempuan">Perempuan</option>
 								</select>
+								@if($errors->has('gender'))							
+								<strong><p class="text-danger">Jenis Kelamin harus diisi.</p></strong>								
+								@endif
 							</div>
 						</td>
 					</tr>
@@ -106,6 +105,9 @@
 									<option>Buddha</option>
 									<option>Konghucu</option>
 								</select>
+								@if($errors->has('religion'))
+								<strong><p class="text-danger">Agama harus diisi.</p></strong>	
+								@endif
 							</div>
 						</td>
 					</tr>												
@@ -114,6 +116,9 @@
 						<td>		
 							<div class="mb-1">							
 								<textarea name="address" class="form-control"></textarea>
+								@if($errors->has('address'))
+								<strong><p class="text-danger">Alamat harus diisi.</p></strong>	
+								@endif
 							</div>								
 						</td>
 					</tr>						
@@ -122,6 +127,9 @@
 						<td>							
 							<div class="mb-1">		
 								<input type="number" class="form-control" name="telp">
+								@if($errors->has('telp'))
+								<strong><p class="text-danger">No. Telp harus diisi.</p></strong>	
+								@endif
 							</div>
 						</td>
 					</tr>				

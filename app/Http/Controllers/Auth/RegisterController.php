@@ -49,8 +49,16 @@ class RegisterController extends Controller
     {
      // dd('addsd');
      return Validator::make($data, [
+      'username' => 'required|unique:users|string|max:20',
       'name' => 'required|string|max:255',
       'email' => 'required|string|email|max:255|unique:users',
+      'password' => 'required|string|min:6',
+      'gender' => 'required|string|max:20',
+      'place' => 'required|string|max:20',
+      'date' => 'required|string|max:20',
+      'religion' => 'required|string|max:20',
+      'address' => 'required|string|max:100',
+      'telp' => 'required|max:20',
     ]);
 
     //  $request->validate([
@@ -68,10 +76,9 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-      dd('asd');
+      // dd('asd');
       return User::create(
         [
-          'number'   => $data['number'],
           'username' => $data['username'],
           'name'     => $data['name'],
           'email'    => $data['email'],
@@ -79,11 +86,9 @@ class RegisterController extends Controller
           'gender'   => $data['gender'],
           'place'    => $data['place'],
           'date'     => $data['date'],       
-          'religion' => $data['religion'],
-          'citizenship' => $data['citizenship'],
-          'address'  => $data['addr'],
-          'telp'     => $data['telp'],
-          'instansi'      => $data['instansi']
+          'religion' => $data['religion'],         
+          'address'  => $data['address'],
+          'telp'     => $data['telp']
         ]);
     }
   }

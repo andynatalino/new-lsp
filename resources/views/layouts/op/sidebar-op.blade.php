@@ -31,16 +31,16 @@ $ss = App\Setting::first();
         <li><a href="{{ url('operator/jadwal') }}"><i class="fa fa-calendar"></i>Jadwal</a></li>
         <li><a href="{{ url('operator/kategori') }}"><i class="fa fa-wpforms"></i>Kategori</a></li>
         <li><a href="{{ url('operator/berita') }}"><i class="fa fa-newspaper-o"></i>Berita</a></li>
-        <li><a href="{{ url('operator/pembayaran') }}"><i class="fa fa-credit-card"></i>Bank</a></li>
-        <li><a href="{{ url('operator/halaman') }}"><i class="fa fa-file-code-o"></i>Halaman Kolum</a></li>
-       <!--  <li class="treeview">
-            <a href="{{ url('operator/pembayaran') }}"><i class="fa fa-credit-card"></i><span>Tipe pembayaran</span> <i class="fa fa-angle-left pull-right"></i></a>
+        <li><a href="{{ url('operator/pembayaran') }}"><i class="fa fa-credit-card"></i>Bank</a></li>      
+        <li class="treeview">
+            <a href="{{ url('operator/pembayaran') }}"><i class="fa fa-credit-card"></i><span>Multimedia</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
-                <li><a href="{{ url('operator/pembayaran/') }}">Bank</a></li>
-                <li><a href="{{ url('operator/pembayaran/tunai') }}">Tunai</a></li>
+                <li><a href="{{ url('operator/klienkami') }}">Klien Kami</a></li>
+                <li><a href="{{ url('operator/galeri') }}">Galeri</a></li>
+                <li><a href="{{ url('operator/slider') }}">Slider</a></li>
+                <li><a  href="{{ url('operator/halaman') }}">Halaman Kolum</a></li>
             </ul>
-        </li> -->
-        <li><a href="{{ url('operator/slider') }}"><i class="fa fa-television"></i>Slider</a></li>
+        </li>        
     </ul>
 </section>
 </aside>
