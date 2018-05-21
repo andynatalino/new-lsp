@@ -10,20 +10,7 @@
 </style>
 <div class="row">
   <div class="col-xs-12">
-    <div class="box">
-      <div class="box-header">
-        <br>
-        <div class="box-tools">
-          <form method="get" action="{{ url('operator/berita/search') }}">
-            <div class="input-group input-group-xs" style="width: 200px;">
-              <input type="text" name="q" class="form-control pull-right" placeholder="Cari User">
-              <div class="input-group-btn">
-                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>      
+    <div class="box">     
       <div class="box-body table-responsive">
         <?php $i = 1; ?>
         <table class="table table-bordered table-striped">

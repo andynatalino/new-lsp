@@ -52,6 +52,7 @@ class IndexController extends Controller
    'nama'=>'required',
    'email'=>'required',
    'telp'=>'required',
+   'perihal'=>'required',
    'isi'=>'required',
  ]);
 
@@ -59,6 +60,7 @@ class IndexController extends Controller
   $kontak->nama = $request->nama;
   $kontak->email = $request->email;
   $kontak->telp = $request->telp;
+  $kontak->perihal = $request->perihal;
   $kontak->isi = $request->isi;
   $kontak->save();
 

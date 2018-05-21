@@ -18,6 +18,7 @@ class CreateKontaksTable extends Migration
             $table->string('nama');
             $table->string('email');
             $table->string('telp');
+            $table->string('perihal');
             $table->longtext('isi');
             $table->timestamps();
         });

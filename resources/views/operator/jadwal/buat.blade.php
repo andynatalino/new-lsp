@@ -30,7 +30,7 @@
               <div class="input-group-addon">
                 <i class="fa fa-calendar"></i>
               </div>
-              <input type="text" class="form-control pull-right" id="datepicker" name="tanggal_mulai" value="{{ date('m/d/Y ', strtotime($date)) }}">
+              <input type="date" class="form-control pull-right" id="datepicker" name="tanggal_mulai" value="{{ date('m/d/Y ', strtotime($date)) }}">
             </div>
           </div>
           <div class="form-group">
@@ -39,44 +39,25 @@
               <div class="input-group-addon">
                 <i class="fa fa-calendar"></i>
               </div>
-              <input type="text" class="form-control pull-right" id="datepicker" name="tanggal_selesai" value="{{ date('m/d/Y ', strtotime($date)) }}">
+              <input type="date" class="form-control pull-right" id="datepicker" name="tanggal_selesai" value="{{ date('m/d/Y ', strtotime($date)) }}">
             </div>
           </div>
           <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
               <div class="form-group">
-                <label>Jam Mulai</label>
+                <label>Waktu Mulai</label>
                 <div class="input-group bootstrap-timepicker timepicker" >
                   <input id="timepicker1" name="jam_mulai" type="text" class="form-control timepicker input-small">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                 </div>
               </div>
             </div>
-            <div class="col-lg-6">
-              <div class="input-group">
-                <div class="form-group">
-                  <label>Jam Selesai</label>
-                  <div class="input-group bootstrap-timepicker timepicker">
-                    <input id="timepicker1" name="jam_selesai" type="text" class="form-control timepicker input-small">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>          
-          <div class="form-group">
-            <label>Kuota (contoh: 30)</label>
-            <input type="text" class="form-control"  name="kuota" placeholder="Kuota">
-          </div>
         </div> <!-- end col md 6 -->
         <div class="col-md-6"> <!-- start col md 6 -->
           <div class="form-group">
             <label>Alamat</label>
             <textarea placeholder="Alamat" name="lokasi" class="form-control"></textarea>
-          </div>
-          <div class="form-group">
-            <label>Wilayah</label>
-            <input type="text" class="form-control" name="nama_lsp" placeholder="Wilayah">
           </div>
           <div class="form-group">
             <label>Biaya</label>
@@ -94,6 +75,10 @@
               <option value="2">Tutup</option>
             </select>
           </div>  
+          <div class="form-group">
+            <label>Kuota (contoh: 30)</label>
+            <input type="text" class="form-control"  name="kuota" placeholder="Kuota">
+          </div>
         </div> <!-- end col md 6 -->
         <div class="col-lg-12"> <!-- start col 12 -->
           <div class="form-group">

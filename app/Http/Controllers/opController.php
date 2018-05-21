@@ -21,35 +21,8 @@ use Illuminate\Http\Request;
 
 class opController extends Controller
 {
-    public function index(){
-      $data['tasks'] = [
-        [
-          'name' => 'Design New Dashboard',
-          'progress' => '100',
-          'color' => 'danger'
-        ],
-        [
-          'name' => 'Create Home Page',
-          'progress' => '76',
-          'color' => 'warning'
-        ],
-        [
-          'name' => 'Some Other Task',
-          'progress' => '32',
-          'color' => 'success'
-        ],
-        [
-          'name' => 'Start Building Website',
-          'progress' => '56',
-          'color' => 'info'
-        ],
-        [
-          'name' => 'Develop an Awesome Algorithm',
-          'progress' => '10',
-          'color' => 'success'
-        ]
-      ];
-      return view('operator.dashboard')->with($data);
+    public function index(){    
+      return view('operator.dashboard');
     }
 
     public function dashboard(){
@@ -425,13 +398,13 @@ class opController extends Controller
   }
 
   public function transaksi_all(){
-    $transaksi = Transaksi::orderBy('created_at', 'desc')->where('status', '=', 3)->get();
+    $transaksi = trans::orderBy('created_at', 'desc')->get();
     return view('operator.transaksi.all', ['transaksi' => $transaksi]);
   }
 
   public function transaksi_search(Request $request){
   $query = $request->q;
-  $transaksi = Transaksi::where('id','like','%'.$query.'%')->where('status', '=', 5)->orderBy('id','asc')->paginate(10);
+  $transaksi = trans::where('id','like','%'.$query.'%')->orderBy('id','asc')->paginate(10);
   return view('operator.transaksi.search', ['transaksi' => $transaksi, 'query' => $query]); 
   }
 

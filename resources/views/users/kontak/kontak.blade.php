@@ -80,6 +80,23 @@
 			</div>
 			<div class="control-group form-group">
 				<div class="controls">
+					<label>Perihal:</label>
+					<select class="form-control" name="perihal">
+						<option value="Konsultasi pembentukan LSP/TUK">Konsultasi pembentukan LSP/TUK</option>
+						<option value="Undangan Presentasi">Undangan Presentasi</option>
+						<option value="Info Pelatihan">Info Pelatihan</option>
+						<option value="Info Sertifikasi">Info Sertifikasi</option>
+						<option value="Lainnya">Lainnya</option>
+					</select>
+					@if ($errors->has('perihal'))
+					<span class="text-danger">
+						<strong>Perihal harus diisi</strong>
+					</span>
+					@endif
+				</div>
+			</div>
+			<div class="control-group form-group">
+				<div class="controls">
 					<label>Isi Pesan:</label>
 					<textarea rows="10" cols="100" class="form-control" name="isi" style="resize:none"></textarea>
 					@if ($errors->has('isi'))

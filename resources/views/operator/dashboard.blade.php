@@ -102,22 +102,26 @@ $transaksi = App\Transaksi::whereDate('tanggal', '=', Carbon::today()->toDateStr
       <div class="box-body table-responsive no-padding">
         <table class="table table-hover">
           <tr>
-            <th>ID Transaksi</th>
-            <th>User</th>
-            <th>Tanggal Konfirmasi</th>
-            <th>Jadwal</th>
-            <th>Biaya</th>
+            <th>No Pembayaran</th>     
+            <th>Skema</th>
+            <th>Pembayaran</th> 
+            <th>Bank Pengirim</th>
+            <th>Atas Nama</th>
+            <th>Jumlah Transfer</th>
+            <th>Tanggal</th>
             <th>Status</th>
           </tr>
           @foreach($transaksi as $key)
           <tr>
-            <td>{{ $key->id }}</td>
-            <td>{{ $key->user->name }}</td>
-            <td>{{ date('j F Y h:i:s', strtotime($key->tanggal)) }}</td>
-            <td>{{ $key->jadwal->nama_lsp }}</td>
-            <td>Rp. {{ $key->jadwal->biaya }},-</td>
+          <td>{{ $key->id }}</td>
+          <td>{{ $key->jadwal->nama }}</td>
+          <td>{{ $key->pembayaran->nama_bank }}</td>  
+          <td>{{ $key->asal_bank }}</td>
+          <td>{{ $key->nama_pengirim }}</td>
+          <td>Rp{{ number_format($key->kode_transfer) }}</td>
+          <td>{{ date('j F Y', strtotime($key->tanggal)) }}</td>
             <td>              
-              @if($key->status == 4) <span class="label label-warning">Pending</span> @elseif($key->status == 5) <span class="label label-success">Lunas</span> @endif
+            <span class="label label-warning">Pending</span>
             </td>          
           </tr>         
           @endforeach

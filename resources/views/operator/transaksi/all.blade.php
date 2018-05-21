@@ -27,12 +27,13 @@
         <table class="table table-bordered table-striped">
           <thead>
             <tr>
-              <th>No. Pembayaran</th>
+             <th>No. Pembayaran</th>
               <th>User</th>
               <th>Jadwal</th>
               <th>Tipe Pembayaran</th>
               <th>Tanggal Konfirmasi</th>
-              <th>Tanggal transaksi</th>
+              <th>Tanggal Pesan</th>
+              <th>Jumlah Transfer</th>
             </tr>
           </thead>          
         </table>
@@ -45,7 +46,8 @@
               <th>Jadwal</th>
               <th>Tipe Pembayaran</th>
               <th>Tanggal Konfirmasi</th>
-              <th>Tanggal transaksi</th>
+              <th>Tanggal Pesan</th>
+              <th>Jumlah Transfer</th>
             </tr>
           </thead>
           
@@ -53,15 +55,16 @@
             @foreach($transaksi as $key)
             <tr>
               <td>{{ $key->id }}</td>
-              <td>{{ $key->user->name }}</td>
-              <td>LSP Komputer</td>
+              <td>{{ $key->user }}</td>
+              <td>{{ $key->jadwal }}</td>
               @if($key->tunai == 1)
               <td>Tunai</td>
               @else
-              <td>{{ $key->pembayaran->nama_bank }}</td>
+              <td>{{ $key->pembayaran }}</td>
               @endif
               <td>{{ date('D, F jS Y \a\t h:i a', strtotime($key->tanggal_konfirmasi)) }}</td>
-              <td>{{ date('D, F jS Y \a\t h:i a', strtotime($key->tanggal_transaksi)) }}</td>
+              <td>{{ date('D, F jS Y \a\t h:i a', strtotime($key->tanggal_pesan)) }}</td>
+              <td>Rp{{ $key->kode_transfer }}</td>
             </tr>
             @endforeach
           </tbody>

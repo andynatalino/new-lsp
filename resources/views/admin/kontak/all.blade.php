@@ -25,6 +25,7 @@
               <td>Nama</td>
               <td>Email</td>
               <td>Telp</td>
+              <td>Perihal</td>
               <td>Isi</td>
               <td>Action</td>
             </tr>
@@ -36,6 +37,7 @@
               <td>{{ substr($key->nama, 0, 30) }}</td>
               <td>{{ substr($key->email, 0, 30) }}</td>
               <td>{{ substr($key->telp, 0, 30) }}</td>
+              <td>{{ substr($key->perihal, 0, 30) }}</td>
               <td>{{ substr($key->isi, 0, 30) }}</td>
               <td>
                <div class="form-group">          

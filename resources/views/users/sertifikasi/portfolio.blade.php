@@ -23,15 +23,16 @@
 </ol>
 <div class="row">
   @foreach($kategori as $key)
-  <div class="col-lg-4 col-sm-6 portfolio-item">
-    <div class="card">
+  <div class="col-lg-2 col-sm-6 portfolio-item">
+    <div class="card" style="height: 300px;">
       <a href="{{ url('sertifikasi/'.$key->slug) }}"><img class="card-img-top" src="{{ url('assets/kategori/'.$key->image) }}" alt=""></a>
       <div class="card-body">
-        <h4 class="card-title">
+        <h6 class="card-title">
           <a href="{{ url('sertifikasi/'.$key->slug) }}">{{ $key->nama_sp }}</a>
-        </h4>
+        </h6>
         <p class="card-text">
-          {!! \Illuminate\Support\Str::words($key->isi, 14,' ...')  !!}</p>
+          {!! \Illuminate\Support\Str::words($key->isi, 5,'')  !!}
+         </p>
       </div>
     </div>
   </div>

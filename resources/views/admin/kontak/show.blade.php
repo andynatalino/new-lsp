@@ -23,6 +23,10 @@
 						</tr>
 						<tr>
 							<td>Isi</td>
+							<td>{{$kontak->perihal}}</td>
+						</tr>
+						<tr>
+							<td>Isi</td>
 							<td>{{$kontak->isi}}</td>
 						</tr>
 						<tr>

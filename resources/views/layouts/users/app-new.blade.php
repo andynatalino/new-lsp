@@ -125,7 +125,7 @@
         <form method="post" action="{{ url('statuspembayaran')}}">
           {{csrf_field()}}          
           <div class="modal-footer">          
-            <input type="hidden" name="id" value="{{ $trans->id }}">            
+            <input type="hidden" name="id" value="{{ $pembayaran->id }}">            
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">CETAK BUKTI</button>
           </div>
